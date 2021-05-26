@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const fileUpload = require('express-fileupload');
+const favicon = require('serve-favicon')
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var hbs = require('express-handlebars')
@@ -20,6 +21,7 @@ app.use(fileUpload());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public','favicon.png')));
 app.use(session({secret:"Key",cookie:{maxAge:600000}}))
 db.connect((err) => {
   if (err) console.log("connection error" + err);

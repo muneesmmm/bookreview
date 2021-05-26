@@ -99,7 +99,7 @@
 
         }
 
-        
+
         a.card:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
@@ -126,8 +126,21 @@
             color: white;
         }
 
-        #search-field:hover{
-                background-color: #ddd;
+        .header-dark {
+            background: url(https://images.unsplash.com/photo-1578658544861-37dbf6d82ea3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80) #444;
+            background-size: cover;
+            padding-bottom: 80px;
+
+        }
+
+        #search-field:hover {
+            background-color: #ddd;
+        }
+
+        .scrollable-menu {
+            height: auto;
+            max-height: 200px;
+            overflow-x: hidden;
         }
     </style>
     <meta charset="utf-8">
@@ -144,6 +157,7 @@
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" type="image/png" href="">
 </head>
 <header class="text-truncate header-dark">
     <nav class="navbar fixed-top navbar-dark navbar-expand-md bg-dark navigation-clean-search"
@@ -153,7 +167,7 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+                    <li class=" nav-item scrollable-menu" role="menu"><a class="nav-link" href="/">HOME</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false"
                             data-toggle="dropdown" href="#">Authors</a>
                         <div class="dropdown-menu">{{#each data}}<a class="dropdown-item"
@@ -202,7 +216,8 @@
 
         <div class="row">
             <div class="col-md-8 col-lg-8 offset-md-2">
-                <h1 class="text-center" style="font-family:Times new roman; margin: 80px 0px 20px;">#Today a reader, tomorrow a leader.</h1>
+                <h1 class="text-center" style="font-family:Times new roman; margin: 80px 0px 20px;">#Today a reader,
+                    tomorrow a leader.</h1>
                 <fieldset class="bg-dark"
                     style="border-radius: 10px; text-align: center;filter: blur(0px) brightness(50%) contrast(106%) grayscale(24%) hue-rotate(360deg);opacity: 0.80;">
                     <p class="text-center mt-2"
@@ -215,7 +230,7 @@
         </div>
     </div>
 </header>
-<nav class="navbar navbar-dark navbar-expand-md fixed-top sticky-top bg-info d-xl-flex justify-content-xl-center align-items-xl-center navigation-clean-button"
+<nav class="navbar navbar-dark navbar-expand-md fixed-top sticky-top bg-info d- justify-content-xl-center align-items-xl-center navigation-clean-button"
     data-bss-hover-animate="pulse">
     <div class="form-popup" id="myForm">
         <form action="/login" method="post" class="form-container">
@@ -249,12 +264,38 @@
     <div class="row" style="">
         {{#each data}}
         <a href="/details/{{this._id}}">
-            <div class="col-md-2 p-4" style="">
+            <div class="col-md-4 d-flex justify-content-center" style="">
                 <div class="row">
-                    <div class="card " data-aos="fade-up" style="height:auto;border-radius: 20px;">
-                        <img class="card-img-top  d-block rounded-5 mt-1 ml-1" height="250px"
+                    <div class="card mb-3" data-aos="fade-up" style="height:auto; width: 18rem;; border-radius: 20px;">
+                        <img class="card-img-top  d-block rounded-5 p-1" height="280px"
                             src="/productimages/{{this._id}}.jpg" alt="Card image cap"
-                            style="align-self: center;width: 95%;hight: 150px;border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                            style="width: 100%;hight: 100px;border-top-left-radius: 20px;border-top-right-radius: 20px;">
+                        <div class="card-body">
+                            <a href="/details/{{this._id}}">
+                                <h5 style="text-align:center;color:red; font-family:serif;"
+                                    class="card-title sammy-nowrap-2">
+                                    {{this.Name}}</h5>
+                            </a>
+                            <p class="card-text sammy-nowrap-2" style="text-align:center;">{{this.Genre}}</p>
+
+                            {{!-- <p class="card-text">{{this.describtion}}</p> --}}
+                            {{!-- <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to
+                                Cart</button>
+                            --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {{/each}}
+        {{#each data}}
+        <a href="/details/{{this._id}}">
+            <div class="col-md-4 d-flex justify-content-center" style="">
+                <div class="row">
+                    <div class="card mb-3" data-aos="fade-up" style="height:auto; width: 18rem;; border-radius: 20px;">
+                        <img class="card-img-top  d-block rounded-5 p-1" height="280px"
+                            src="/productimages/{{this._id}}.jpg" alt="Card image cap"
+                            style="width: 100%;hight: 100px;border-top-left-radius: 20px;border-top-right-radius: 20px;">
                         <div class="card-body">
                             <a href="/details/{{this._id}}">
                                 <h5 style="text-align:center;color:red; font-family:serif;"
@@ -288,7 +329,20 @@
         </a>
     </div>
 </div>
+<section>
+    <!-- Footer -->
+    <footer class="text text-white" style="background-color: #14202c;">
+        <!-- Grid container -->
+        <div class="container p-2 pb-0">
 
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2020 Copyright:
+                <a class="text-white" href="https://traversa.live/">www.bit-bulders.com</a>
+            </div>
+            <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</section>
 </body>
 <script>
     function openForm() {
